@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace LullaWorld
 {
     /**
-   * Thomas K. Johansen, Thea Alnæs
+   * Thea Marie Alnæs
    * Programmering 3 prosjekt
    * 30.05.2014
    */
