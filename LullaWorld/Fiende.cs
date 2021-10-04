@@ -8,7 +8,7 @@ namespace LullaWorld
 {
 
     /**
-     * Thomas K. Johansen, Thea Alnæs
+     * Thea Marie Alnæs
      * Programmering 3 prosjekt
      * 30.05.2014
      */
@@ -17,10 +17,10 @@ namespace LullaWorld
     /**
      * Fiende.cs
      * Tar seg av tegning og oppdatering av turrets, inkludert kollisjon mellom laser og spiller/boss
-     * Vi lagde IMyDrawable etter at vi lagde Fiende, og Boss.cs bruker samme textures, derfor har vi beholdt at textures lastes i InitGame. 
-     * Vi kunne ha gjort om TurretLaser.cs slik at den også brukte IMyDrawable, men det var samtidig behagelig at den ikke tok seg av det.
-     * Boss var ikke planlagt, bare noe vi bestemte oss for på sparket da vi bestemte oss for å bare bruke ett av kartene vi hadde laget.
-     * Så det var ikke lagt opp til et hierarki der, og Fiende.cs ble bygd opp med den tanken at den eneste fienden vi hadde var turrets.
+     * Jeg lagde IMyDrawable etter at jeg lagde Fiende, og Boss.cs bruker samme textures, derfor har jeg beholdt at textures lastes i InitGame. 
+     * Jeg kunne ha gjort om TurretLaser.cs slik at den også brukte IMyDrawable, men det var samtidig behagelig at den ikke tok seg av det.
+     * Boss var ikke planlagt, bare noe jeg bestemte meg for på sparket da jeg bestemte meg for å bare bruke ett av kartene jeg hadde laget.
+     * Så det var ikke lagt opp til et hierarki der, og Fiende.cs ble bygd opp med den tanken at den eneste fienden jeg hadde var turrets.
      */
 
     class Fiende : IMyDrawable
@@ -62,11 +62,7 @@ namespace LullaWorld
             _boss = InitGame.TheBoss;
         }
 
-      /// <summary>
-      /// DRAW
-      /// Tegner fiende OG laserstråler
-      /// </summary>
-      /// <param name="spriteBatch"></param>
+
         public void Draw(SpriteBatch spriteBatch)
         {
             _matrix = InitGame.Camera.GetTransformasjon();
@@ -113,10 +109,6 @@ namespace LullaWorld
         }
 
 
-        /// <summary>
-        /// UPDATE
-        /// </summary>
-        /// <param name="gameTime"></param>
         public void Update(GameTime gameTime) 
         {
             var rand = new Random();
@@ -150,12 +142,6 @@ namespace LullaWorld
         }
 
 
-        /// <summary>
-        /// ShootLaserBeam()
-        /// ... skyter laser fra fiende.
-        /// </summary>
-        /// <param name="gameTime"></param>
-        /// <param name="spiller"></param>
         private void ShootLaserBeam(GameTime gameTime)
         {
             if (_laserBeamList.Count <= 0 || _laserBeamList.Equals(null)) return;
@@ -166,7 +152,7 @@ namespace LullaWorld
 
                     _laserBeamList[i].GammelPosisjon = _laserBeamList[i].Posisjon;
                     _laserBeamList[i].Posisjon += _laserBeamList[i].Retning * _laserBeamList[i].Hastighet;
-                    //Holde styr på hvor lenge den har "levd" sånn at vi kan fjerne den når den overgår en viss grense
+                    //Holde styr på hvor lenge den har "levd" sånn at jeg kan fjerne den når den overgår en viss grense
                     _laserBeamList[i].TotalLivsTid += gameTime.ElapsedGameTime.Milliseconds;
 
                     if (_laserBeamList[i].Posisjon.Y <= 5) //Fjernes om den går for høyt
