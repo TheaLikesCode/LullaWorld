@@ -7,10 +7,12 @@ using MySql.Data.MySqlClient;
 namespace LullaWorld
 {
     /**
-   * Thomas K. Johansen, Thea Alnæs
+   * Thea Marie Alnæs
    * Programmering 3 prosjekt
    * 30.05.2014
    */
+    
+    //Var brukt til high score. Velger å inkludere denne klassen som eksempel.
     internal class DBConnect
     {
         private MySqlConnection _connection;
@@ -70,11 +72,7 @@ namespace LullaWorld
             }
         }
 
-        /// <summary>
-        /// Henter spillerID
-        /// </summary>
-        /// <param name="brukernavn"></param>
-        /// <returns></returns>
+
         public int GetPlayerId(string brukernavn)
         {
             if (!OpenConnection()) return 0;
@@ -97,11 +95,7 @@ namespace LullaWorld
             }
         }
 
-        /// <summary>
-        /// Henter beste scoren til brukeren
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+
         public Int32 GetPersonalBest(int id)
         {
             if (!OpenConnection()) return 0;
@@ -124,12 +118,7 @@ namespace LullaWorld
             return 0;
         }
 
-        /// <summary>
-        /// Sjekker passord
-        /// </summary>
-        /// <param name="brukernavn"></param>
-        /// <param name="passord"></param>
-        /// <returns></returns>
+
         public bool CheckPassword(string brukernavn, string passord)
         {
             if (!OpenConnection()) return false;
@@ -153,11 +142,7 @@ namespace LullaWorld
             }
         }
 
-        /// <summary>
-        ///  Henter ut highscores, sortert stigende og returnerer et dataset
-        /// </summary>
-        /// <param name="_query">string</param>
-        /// <returns>BindingList</returns>
+
         public List<int> GetHighScores()
         {
             /* if (!OpenConnection()) return null;
@@ -183,11 +168,7 @@ namespace LullaWorld
             return null;
         }
 
-        /// <summary>
-        /// Setter inn en ny highscore
-        /// </summary>
-        /// <param name="_name">String</param>
-        /// <param name="_score">int</param>
+
         public void InsertScore(int _score, int _id)
         {
             String insertQ = String.Format("INSERT INTO HighScore(score, brukerID) VALUES({0}, {1})", _score, _id);
@@ -204,7 +185,7 @@ namespace LullaWorld
                 MessageBox.Show("Feil med oppdatering av DB: " + e.Message);
             }
 
-            CloseConnection(); //lukk forbindelse
+            CloseConnection(); 
         }
     }
 }
