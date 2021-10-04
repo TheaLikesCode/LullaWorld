@@ -18,7 +18,6 @@ namespace LullaWorld
         [STAThread]
         static void Main()
         {
-
             using (InitGame game = new InitGame())
             {
                 game.Run();
