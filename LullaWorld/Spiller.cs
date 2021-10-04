@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Input;
 namespace LullaWorld
 {
     /**
-    * Thomas K. Johansen, Thea Alnæs
+    * Thea Marie Alnæs
     * Programmering 3 prosjekt
     * 30.05.2014
     */
@@ -23,12 +23,11 @@ namespace LullaWorld
     /**
      * Spiller.cs
      * Håndterer brukerinput (for skipet), tegning, bevegelse, oppdatering, kollisjonspunkter på skip
-     * Bruker IMyDrawable (vi er så kreative med navn...) fordi vi synes vi fikk bedre kontroll over 
+     * Bruker IMyDrawable fordi jeg synes jeg fikk bedre kontroll over 
      * hva som skjer når ved å ikke bruke components (eller innebygd XNA interfaces).
      */
     public class Spiller : IMyDrawable
     {
-     
         protected internal Vector2 Posisjon { get; set; }
         protected internal Vector2 Hastighet { get; set; }
         protected internal Color Farge { get; set; }
@@ -70,10 +69,6 @@ namespace LullaWorld
      
         }
 
-        /// <summary>
-        /// LOAD CONTENT
-        /// </summary>
-        /// <param name="game"></param>
         public void LoadContent(Game game)
         {
             _texture2D = game.Content.Load<Texture2D>("ship.png");
@@ -83,11 +78,6 @@ namespace LullaWorld
             _rotasjonsPunkt = new Vector2(_texture2D.Width / 2, _texture2D.Height / 2);
         }
 
-
-        /// <summary>
-        /// DRAW
-        /// </summary>
-        /// <param name="spriteBatch"></param>
         public void Draw(SpriteBatch spriteBatch)
         {
           if(!_jetLydInstance.IsLooped) //stopper lyden om jetmotoren er inaktiv.
@@ -192,11 +182,7 @@ namespace LullaWorld
             }          
         }
 
-   
-        /// <summary>
-        /// UPDATE
-        /// </summary>
-        /// <param name="gameTime"></param>
+
         public void Update(GameTime gameTime)
         { 
             _gammelPosisjon = Posisjon;       //kontrollverdier
