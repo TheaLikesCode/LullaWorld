@@ -14,7 +14,7 @@ namespace LullaWorld
 {
 
     /**
-    * Thomas K. Johansen, Thea Alnæs
+    * Thea Marie Alnæs
     * Programmering 3 prosjekt
     * 30.05.2014
     */
@@ -41,10 +41,10 @@ namespace LullaWorld
      *          
      * InitGame : Game
      * Verden : DrawableGameComponent
-     * Vi synes egentlig ikke at vi hadde spesielt behov for components her og der, så i Fiende.cs, Spiller.cs og Boss.cs
-     * bruker vi heller eget interface IMyDrawable for LoadContent/Update/Draw. 
+     * Jeg synes egentlig ikke at jeg hadde spesielt behov for components her og der, så i Fiende.cs, Spiller.cs og Boss.cs
+     * bruker jeg heller eget interface IMyDrawable for LoadContent/Update/Draw. 
      *  
-     * Vi har jobbet på prosjektet inntil siste frist, så noe av dette er ganske ferskt og uprøvd 
+     * Jeg har jobbet på prosjektet inntil siste frist, så noe av dette er ganske ferskt og uprøvd 
      * (spesielt Boss har ikke blitt testet så mye)
      * 
      */
@@ -64,7 +64,6 @@ namespace LullaWorld
         private GameState _currentGameState = GameState.Playing;
         protected internal static Level CurrentLevel { get; set; }
 
-        //Mucho static
         protected internal static Camera Camera;
         protected internal static Color[] KollisjonsKartData; //Fargedata fra kollisjonskartet, brukes for å plassere fiender (turrets)
 
@@ -183,11 +182,7 @@ namespace LullaWorld
            
         }
 
-   
-       /// <summary>
-       /// UPDATE
-       /// </summary>
-       /// <param name="gameTime"></param>
+ 
         protected override void Update(GameTime gameTime)
         {
             _totalTime += gameTime.ElapsedGameTime;
@@ -272,11 +267,7 @@ namespace LullaWorld
             WriteToScreen(CurrentLevel);
             base.Update(gameTime);
         }
-
-       /// <summary>
-       /// Utskrift til skjermen basert på level
-       /// </summary>
-       /// <param name="currentLevel"></param>
+       
         private void WriteToScreen(Level currentLevel)
         {
             _outputStringBuilder.Clear();
@@ -326,10 +317,8 @@ namespace LullaWorld
         }
 
 
-       /// <summary>
-       /// Sjekker hvilken level vi er i avhengig av posisjon
-       /// </summary>
-       /// <returns></returns>
+
+       // Sjekker hvilken level spilleren er i avhengig av posisjon
         private Level CheckLevel()
         {
 
@@ -359,19 +348,16 @@ namespace LullaWorld
         private void CheckPlayerHealth()
         {
             //Gjør spiller oppmerksom på forandring i helse, bytte farge og skalere
-
             if (Spilleren.Helse < _spillerHelse)
             {
                 _fontColor = Color.Red;
 
                 if(Spilleren.Score>0)
-                    Spilleren.Score -= 1;
-                
+                    Spilleren.Score -= 1;             
             }
            if (Spilleren.Helse > _spillerHelse)
             {
                 _fontColor = Color.LightGreen;
-               
             }
             if(Spilleren.Helse==_spillerHelse)
             {
@@ -385,15 +371,10 @@ namespace LullaWorld
             if (Spilleren.Posisjon.X >= 700)
                 Camera.Posisjon = Spilleren.Posisjon;
             
-   
             _myEffect.Parameters["ShipX"].SetValue(Spilleren.Posisjon.X); //til shader
             _myEffect.Parameters["ShipY"].SetValue(Spilleren.Posisjon.Y * 2.6f); //til shader
         }
 
-    /// <summary>
-    /// DRAW
-    /// </summary>
-    /// <param name="gameTime"></param>
         protected override void Draw(GameTime gameTime)
         {
             _graphics.GraphicsDevice.Clear(Color.White);
@@ -410,7 +391,7 @@ namespace LullaWorld
             _spriteBatch.End();
             
            if(CurrentLevel==Level.Boss)
-                 TheBoss.Draw(_spriteBatch); //Tegner bossen
+                 TheBoss.Draw(_spriteBatch); 
 
             _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.AnisotropicClamp,
                     DepthStencilState.Default, RasterizerState.CullNone, null, Camera.GetTransformasjon());
@@ -424,9 +405,10 @@ namespace LullaWorld
                 new Rectangle(_blomstKartDel1.Width - 18, 0, _blomstKartDel2.Width, _blomstKartDel2.Height), 
                 Color.White)
                 ;
-            _spriteBatch.End(); //
+            _spriteBatch.End();
 
-            _spriteBatch.Begin();//tegne HelseBar
+            //tegne HelseBar
+            _spriteBatch.Begin(); 
             _spriteBatch.Draw(
                 FiendeLaserTexture2D,
                 new Vector2(0, 25),
