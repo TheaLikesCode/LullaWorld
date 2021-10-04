@@ -9,7 +9,7 @@ namespace LullaWorld
 {
 
     /**
-     * Thomas K. Johansen, Thea Alnæs
+     * Thea Marie Alnæs
      * Programmering 3 prosjekt
      * 30.05.2014
      */
@@ -44,13 +44,11 @@ namespace LullaWorld
         //Lagre farger i Kart-texturen
        protected internal static Texture2D KollisjonsKart; //Texture til kart
         
-        //Fiende
-        private readonly List<Fiende> _fiendeListe; //Alle fiendene våre
-        //Spilleren
-        private readonly Spiller _spilleren; //Vår helt
-        //Juveler
+        private readonly List<Fiende> _fiendeListe; 
+        private readonly Spiller _spilleren; 
+        private readonly List<Juvel> _juvelListe; 
         private readonly List<Juvel> _juvelListe2; //Brukes til backup for å plassere juveler på nytt når man starter spill på nytt etter å ha dødd
-        private readonly List<Juvel> _juvelListe; //Alle våre juveler
+        
         private readonly SpriteBatch _spriteBatch;
 
         //Static fordi de brukes i Collision
@@ -82,15 +80,12 @@ namespace LullaWorld
             
             _spriteBatch = new SpriteBatch(game.GraphicsDevice);
 
-            PlaceEnemies(KollisjonsKart); //Plasserer fiender
-            PlaceJewels(KollisjonsKart); //Plasserer juveler
+            PlaceEnemies(KollisjonsKart); 
+            PlaceJewels(KollisjonsKart); 
             CountJewels(_juvelListe); //Teller antall juveler, bruker metode fordi når brukeren restarter spillet brukes den samme metoden men med en annen (backup) liste
         }
 
-        /// <summary>
-        /// DRAW
-        /// </summary>
-        /// <param name="gameTime"></param>
+
         public override void Draw(GameTime gameTime)
         {
             //Tegner alle fiendene
@@ -109,10 +104,7 @@ namespace LullaWorld
                 _spriteBatch.End();
             }
         }
-        /// <summary>
-        /// UPDATE
-        /// </summary>
-        /// <param name="gameTime"></param>
+
        public override void Update(GameTime gameTime)
        {
            //Oppdater fiende
@@ -144,10 +136,6 @@ namespace LullaWorld
         */
 
 
-        /// <summary>
-        // Når brukeren trykker space etter å ha dødd for å prøve på nytt
-        // Henter data fra backupliste og fyller originalliste på nytt
-        /// </summary>
        public void ReInit()
         {
             _juvelListe.Clear();
@@ -165,11 +153,8 @@ namespace LullaWorld
            }        
 
         }
-        /// <summary>
-        /// SamleJuveler.
-        /// Håndterer liste, poeng, helse, og spiller av lyd
-        /// </summary>
-        /// <param name="gameTime"></param>
+
+       //Håndterer liste, poeng, helse, og spiller av lyd
        private void SamleJuveler(GameTime gameTime)
        {
            //Samle opp juveler
@@ -273,11 +258,8 @@ namespace LullaWorld
         }
 
 
-        /// <summary>
-        /// Plasserer fiender (turrets) basert på posisjonen til røde piksler i kollisjonskartet
-        /// Også nødvendig for generell kollisjon 
-        /// </summary>
-        /// <param name="kart1"></param>
+        //Plasserer fiender (turrets) basert på posisjonen til røde piksler i kollisjonskartet
+        //Også nødvendig for generell kollisjon 
         public void PlaceEnemies(Texture2D kart1)
         {                  
             //Sjekke kart og lagrer fargedata i et array
@@ -301,12 +283,9 @@ namespace LullaWorld
         }
 
 
-        /// <summary>
-        /// Plasserer juveler basert på posisjonen til grønne, magenta og blå piksler i kollisjonskartet
-        /// Lagrer Farge-verdi i stedet for JuvelType fordi fargen brukes i Draw()
-        /// </summary>
-        /// <param name="kart1"></param>
-        /// <param name="kart2"></param>
+
+        //Plasserer juveler basert på posisjonen til grønne, magenta og blå piksler i kollisjonskartet
+        //Lagrer Farge-verdi i stedet for JuvelType fordi fargen brukes i Draw()
         public void PlaceJewels(Texture2D kart1)
         {
             //Sjekke kart 1 og lagrer fargedata i et array
@@ -339,11 +318,8 @@ namespace LullaWorld
             }
         }
 
-        /// <summary>
-        /// CountJewels
-        /// Teller hvor mange juveler som er i hver Level
-        /// </summary>
-        /// <param name="list"></param>
+
+        //Teller hvor mange juveler som er i hver Level
         protected internal void CountJewels(List<Juvel> list )
         {
             foreach (Juvel j in list)
@@ -364,12 +340,8 @@ namespace LullaWorld
             }
         }
 
-        /// <summary>
-        /// GetJuvelSum
-        /// Teller antall juveler som er igjen i hver Level
-        /// </summary>
-        /// <param name="level"></param>
-        /// <returns></returns>
+
+        //Teller antall juveler som er igjen i hver Level
         public int GetJuvelSum(Level level)
         {
             switch (level)
