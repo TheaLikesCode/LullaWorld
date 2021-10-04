@@ -8,13 +8,13 @@ namespace LullaWorld
 
 {
     /**
-   * Thomas K. Johansen, Thea Alnæs
+   * Thea Marie Alnæs
    * Programmering 3 prosjekt
    * 30.05.2014
    */
     /**
      * Enkelt loginform. Validerer input med regex, sjekker brukernavn og passord mot DB (ikke hashet),
-     * henter ut tilhørende informasjon om brukeren og en liste over alle highscores (som vi aldri fikk tid til å bruke)
+     * henter ut tilhørende informasjon om brukeren og en liste over alle highscores (som jeg aldri fikk tid til å bruke)
      */
 
     public partial class LoginFormet : Form
@@ -39,11 +39,7 @@ namespace LullaWorld
             _dbConnect = new DBConnect();
         }
 
-       /// <summary>
-       /// Eventmetode for loginknapp
-       /// </summary>
-       /// <param name="sender"></param>
-       /// <param name="e"></param>
+
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             if (!_brukerNavnValidated || !_passordValidated) return;
