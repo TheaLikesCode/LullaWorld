@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 
 /**
-  * Thea Alnæs
+  * Thea Marie Alnæs
   * Programmering 3 prosjekt
   * 30.05.2014
   */
@@ -9,9 +9,7 @@
 namespace LullaWorld
 {
    
-    /**
-     * Translaterer og transformerer textures utifra spillerposisjon
-     */
+
    public class Camera
     {
         private Matrix _transformasjon;
@@ -40,7 +38,6 @@ namespace LullaWorld
             get { return _posisjon; }
             set
             {
-                //Grenser for Y
                  if (value.Y > 360)
                      _posisjon.Y = MathHelper.Lerp(_posisjon.Y, 360, Hastighet);
                 else if (value.Y < -100)
