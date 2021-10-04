@@ -7,14 +7,14 @@ namespace LullaWorld
 {
 
     /**
-     * Thomas K. Johansen, Thea Alnæs
+     * Thea Marie Alnæs
      * Programmering 3 prosjekt
      * 30.05.2014
      */
 
     /**
      * Klasse for bossen.
-     * Spawner når brukeren har tatt alle juvelene i alle kart
+     * Spawner når brukeren har tatt alle juvelene i alle karthttps://github.com/TheaLikesCode/LullaWorld/blob/master/LullaWorld/Boss.cs
      * (sjekkes i InitGame.cs og CurrentLevel settes til Level.Boss)
      *  
      * Tar seg av: Tegne, Oppdatere, skyte laser på spilleren
@@ -43,12 +43,6 @@ namespace LullaWorld
             Helse = 100;
         }
 
-
-
-        /// <summary>
-        /// LOAD CONTENT
-        /// </summary>
-        /// <param name="game"></param>
         public void LoadContent(Game game)
         {
             _bossTexture2D = game.Content.Load<Texture2D>("boss");
@@ -56,10 +50,6 @@ namespace LullaWorld
         }
 
 
-        /// <summary>
-        /// UPDATE
-        /// </summary>
-        /// <param name="gameTime"></param>
         public void Update(GameTime gameTime)
         {
             if (Helse <= 0) { 
@@ -74,7 +64,7 @@ namespace LullaWorld
                 (float)Math.Sin(gameTime.TotalGameTime.TotalSeconds) 
                 * 20f, Posisjon.Y);
 
-            //Avstand mellom boss og spiller 
+
             var bossToPlayerDistance = Posisjon - spiller.Posisjon;
 
             //Skyter bare om spilleren er nærme nok
@@ -107,11 +97,6 @@ namespace LullaWorld
             ShootLaserBeam(gameTime, spiller);     
         }
 
-
-      /// <summary>
-      /// DRAW
-      /// </summary>
-      /// <param name="spriteBatch"></param>
         public void Draw(SpriteBatch spriteBatch)
         {
             
@@ -144,11 +129,6 @@ namespace LullaWorld
         }
 
 
-        /// <summary>
-        /// Skyter på spilleren
-        /// </summary>
-        /// <param name="gameTime"></param>
-        /// <param name="spiller"></param>
         private void ShootLaserBeam(GameTime gameTime, Spiller spiller)
         {
             if (_bossLaserList.Count <= 0 || _bossLaserList.Equals(null)) return;
