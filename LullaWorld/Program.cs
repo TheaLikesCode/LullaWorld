@@ -8,7 +8,7 @@ namespace LullaWorld
 {
 
     /**
-     * Thea Alnæs
+     * Thea Marie Alnæs
      * Programmering 3 prosjekt
      * 30.05.2014
      */
