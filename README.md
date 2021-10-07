@@ -1,8 +1,12 @@
-# Lullaworld
-Prosjekt fra 2. år på høyskolen. 2D spill lagd i C# XNA med per piksel kollisjon.
-Man styrer et romskip og må fange juveler samtidig som at man må passe seg for turrets. På slutten er det boss fight med C# foreleseren min som boss. Han skyter lasere fra øynene. :)
-Juveler og turrets spawnes inn med pikselmap. Artwork ble lagd med GIMP.
+# Introduction
+This is a 2D game created with C# with XNA and Monogame. It was created for a university project in 2014 so the libraries are outdated and the game cannot be compiled or ran. 
+But I was smart enough to [record a video](https://youtu.be/4gABrQuSDfo). I was never very good at playing it. I created the art in Gimp but I made it too detailed (I'm not an artist) so the collision became a little wonky in some places and I didn't have time to fix it. 
 
-For å kompilere prosjektet kreves det [XNA Framework Redistributabl](http://www.microsoft.com/en-us/download/details.aspx?id=20914)
-og [Monogame for Visual Studio](http://www.monogame.net/downloads/)
-Dette er såpass utdatert nå at jeg selv ikke klarer å kompilere det, men video av gameplay ligger [her](https://youtu.be/DfP7lOOrhSI). Jeg var aldri særlig flink til å spille det og kollisjonskartet var litt kronglete noen steder.
+# The Game
+The player controls a space ship and the goal is to collect as many jewels as possible, whilst avoiding the turrets.
+At the end there is a boss (my C# lecturer who has lasers shooting out of his eyes) which you have to kite back to the turrets so that the turrets kill him.
+The ship is affected by a faux gravity and you have to watch your fuel consumption. The pitch of the audio changes if you use the turbo boost.
+The game uses per pixel collision, and enemies and jewels are spawned using pixel maps.
+It featured a high score list which used the university's database. The code for this connection has been removed but I chose to keep the code for the high score reporting. 
+
+This project is now 7 years old and it's messy at times. I might one day recreate it but because of the libraries used it's a fairly big task.
